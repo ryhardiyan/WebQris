@@ -1,0 +1,134 @@
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <title>PAYMENT GATEWAY QRIS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script type="module" src="/js/script.js"></script>
+<script src="https://unpkg.com/html-to-image@latest/dist/html-to-image.js"></script>
+<script src="https://unpkg.com/file-saver@latest/dist/FileSaver.min.js"></script>
+
+<link rel="icon" type="image/png" href="favicon.ico">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body id="body" class="roboto-regular">
+  
+<div id="loginFirst">
+  <h1 class="is-2 title">PAYMENT GATEWAY QRIS</h1>
+  <div id="loginWrapper" class="p-4 card">
+    <label>Upload QRIS</label>
+     <input id="fileInput" accept="image/*" type="file" class="input">
+    <span id="fileInputMsg" class="msg"></span>
+    <br><br>
+    Or enter the qris code manually
+    <input autocomplete="off" id="inputLogin" placeholder="0002010..." class="input is-fullwidth my-1">
+    <button id="submitLogin" class="button is-dark is-fullwidth">Login</button>
+    <span id="submitLoginMsg" class="msg"></span>
+    <br>
+  </div>
+  <br>
+  <center style="opacity:0.90">© RyharDev - 2024 Copyright</center>
+</div>
+  
+  
+  
+
+  
+
+
+<div style="display:none" id="content">
+  <div class="header">
+<h1 class="is-3 subtitle">Halo,</h1>
+<h1 id="namaMerchant" class="is-2 is-skeleton title">Merchant</h1>
+<span>Click on Sticker to download individual Stickers</span>
+</div>
+
+<div id="navbar">
+<button class="js-modal-trigger button is-dark" data-target="modalBuatStiker">Custoom QRIS</button>
+  <button class="js-modal-trigger button is-dark" data-target="modalGantiQris">Change QRIS code</button>
+<button class="js-modal-trigger button is-danger" data-target="modalLogout">Logout</button>
+</div>
+
+
+<div class="canvasWrapper">
+
+<div id="gridCanvas" class="fixed-grid has-3-cols">
+<div id="listQrisCanvas" class="grid">
+</div>
+
+<div id="canvasBtn">
+<button id="downloadAll" class="button is-fullwidth is-dark">Download All Stickers (.png)Download All Stickers (.png)</button>
+</div>
+</div>
+</div>
+
+<div id="dataTersimpan">
+<div class="buttonBawah">
+  <button id="donate" class="button is-dark">Donate</button>
+</div>
+  <div class="p-4">
+ Backup Code : <br>
+ <span class="js-modal-trigger" data-target="merchantQRIS" id="dataQris"></span>
+</div>
+</div>
+</div>
+
+
+
+<div id="modalBuatStiker" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+      <div class="p-3 card">
+        <h1 class="is-3 title">Created QRIS</h1>
+        <input id="inputNamaItem" autocomplete="off" placeholder="Nama" class="input is-fullwidth my-1">
+        <input id="inputHargaItem" type="number" autocomplete="off" placeholder="Harga" class="input is-fullwidth my-1">
+        <button id="submitTambahItem" class="button is-fullwidth is-dark">Created</button>
+        <span class="msg" id="buatStikerMsg"></span>
+      </div>
+  </div>
+</div>
+<div id="modalLogout" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+      <div class="p-3 card">
+        <h1 class="is-4 title">Exiting will remove all qris</h1>
+        <button id="submitLogout" class="button is-fullwidth is-dark">Logout</button>
+      </div>
+  </div>
+</div>
+<div id="modalGantiQris" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+      <div class="p-3 card">
+        <h1 class="is-3 title">Change QRIS Code</h1>
+        <input id="inputGantiQris" autocomplete="off" placeholder="New QRIS code" class="input is-fullwidth my-1">
+        <button id="submitGantiQris" class="button is-fullwidth is-dark">Change</button>
+          <span id="gantiQrisMsg" class="msg is-danger">Changing the code removes all qris</span>
+      </div>
+  </div>
+</div>
+<div id="merchantQRIS" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+      <div class="p-3 card">
+        <h1 class="is-3 title">Merchant QRIS</h1>
+        <center>
+        <canvas id="merchantQRIScanvas"></canvas>
+        </center>
+      </div>
+  </div>
+</div>
+<div id="modalHapusItem" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+      <div id="itemListToDelete" class="p-3 card">
+      <ul>
+        <li>List 1</li>
+        <li></li>
+      </ul>
+      <button class="is-fullwidth button is-dark">OK</button>
+      </div>
+  </div>
+</div>
+</body>
+</html>
